@@ -8,13 +8,20 @@ import outfitRoutes from "./routes/outfitRoutes.js";
 import wardrobeRoutes from "./routes/wardrobeRoutes.js";
 import mailRoute from "./routes/mailRoute.js";
 import path from "path";
+import fs from "fs";
 
 dotenv.config();
 
 const app = express();
 
 const __dirname=path.resolve()
-// ✅ Correct CORS setup for React (http://localhost:5173)
+
+const uploadPath = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadPath)) {
+  fs.mkdirSync(uploadPath, { recursive: true });
+  console.log("📂 uploads folder created");
+}
+
 app.use(cors({
   origin: "https://what2wear-bsr8.onrender.com",
   credentials: true,
