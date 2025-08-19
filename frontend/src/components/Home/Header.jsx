@@ -1,82 +1,13 @@
-// import React, { useEffect, useState } from "react";
-// import { Link, useNavigate } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-// import { logout } from "../../redux/slices/authSlice";
-
-// function Header() {
-//   const user = useSelector((state) => state.auth.user);
-//   const dispatch = useDispatch();
-//   const [openMenu, setOpenMenu] = useState(false);
-//   const navigate = useNavigate();
-
-//   const firstLetter = user?.name?.[0]?.toUpperCase();
-
-//   const handleLogout = () => {
-//     dispatch(logout());
-//     navigate("/");
-//   };
-
-//   return (
-//     <div className="bg-gray-200 border-gray-400 rounded-full flex items-center justify-between pl-4 pr-10 py-1 w-full relative">
-//       <div className="flex items-center justify-center">
-//         <img src="logo.png" alt="Logo" className="w-24 rounded-full" />
-//         <Link to="/" className="font-semibold text-2xl">
-//           What2Wear
-//         </Link>
-//       </div>
-
-//       {user ? (
-//         <div className="relative">
-//           <button
-//             onClick={() => setOpenMenu(!openMenu)}
-//             className="ml-4 px-5 py-2 bg-black text-white rounded-full"
-//           >
-//             {firstLetter}
-//           </button>
-//           {openMenu && (
-//             <div className="absolute mt-2 w-24 bg-white rounded-lg shadow-lg z-10">
-//               <Link
-//                 to="/profile"
-//                 className="block px-4 py-2 hover:bg-gray-100"
-//                 onClick={() => setOpenMenu(false)}
-//               >
-//                 Profile
-//               </Link>
-
-//               <button
-//                 onClick={handleLogout}
-//                 className="w-full text-left px-4 py-2 hover:bg-gray-100"
-//               >
-//                 Logout
-//               </button>
-//             </div>
-//           )}
-//         </div>
-//       ) : (
-//         <Link
-//           to="/login"
-//           className="ml-4 px-5 py-2 bg-black text-white rounded-full hover:bg-black/20"
-//         >
-//           Login
-//         </Link>
-//       )}
-//     </div>
-//   );
-// }
-
-// export default Header;
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/slices/authSlice";
-import { FiMenu, FiX } from "react-icons/fi";
 
 function Header() {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
-  const [openMenu, setOpenMenu] = useState(false); // desktop dropdown
-  const [mobileMenu, setMobileMenu] = useState(false); // mobile menu
+  const [openMenu, setOpenMenu] = useState(false); 
+  const [mobileMenu, setMobileMenu] = useState(false); 
   const navigate = useNavigate();
 
   const firstLetter = user?.name?.[0]?.toUpperCase();
@@ -154,21 +85,21 @@ function Header() {
             What2Wear
           </Link>
         </div>
-       <div className="flex items-center">
+        <div className="flex items-center">
           {user ? (
             <div className="">
               <button
-                onClick={() => setOpenMenu(!openMenu)}
+                onClick={() => setMobileMenu(!mobileMenu)}
                 className="ml-4 px-5 py-2 bg-black text-white rounded-full"
               >
                 {firstLetter}
               </button>
-              {openMenu && (
+              {mobileMenu && (
                 <div className="absolute mt-2 right-0 w-28 bg-white rounded-lg shadow-lg z-10">
                   <Link
                     to="/profile"
                     className="block px-4 py-2 hover:bg-gray-100"
-                    onClick={() => setOpenMenu(false)}
+                    onClick={() => setMobileMenu(false)}
                   >
                     Profile
                   </Link>

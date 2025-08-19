@@ -13,7 +13,7 @@ function FilteredOutfits() {
   useEffect(() => {
     const fetchOutfits = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/outfits", {
+        const res = await axios.get("https://what2wear-bsr8.onrender.com/api/outfits", {
           withCredentials: true,
         });
         console.log(res.data);
@@ -32,7 +32,7 @@ function FilteredOutfits() {
     const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this outfit?")) return;
     try {
-      await axios.delete(`http://localhost:3000/api/outfits/${id}`, {
+      await axios.delete(`https://what2wear-bsr8.onrender.com/api/outfits/${id}`, {
         withCredentials: true,
       });
       setOutfits(outfits.filter((o) => o._id !== id));

@@ -16,7 +16,7 @@ const app = express();
 const __dirname=path.resolve()
 // ✅ Correct CORS setup for React (http://localhost:5173)
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://what2wear-bsr8.onrender.com",
   credentials: true,
 }));
 

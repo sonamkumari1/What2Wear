@@ -11,7 +11,7 @@ function NewsletterForm() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:3000/api/mail/send", {
+      const res = await fetch("https://what2wear-bsr8.onrender.com/api/mail/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ firstName, lastName, email, subscribe }),
